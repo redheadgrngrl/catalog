@@ -138,7 +138,7 @@
       <span class="sale-pill">Essential Oils 40% off</span>
       <span class="sale-pill">Select Food Items 40% off</span>
       <span class="sale-pill">Gifts 50% off</span>
-      <span class="sale-pill">Personal Care 30% off</span>
+      <span class="sale-pill">Personal Care 40% off</span>
       <span class="sale-pill">Tea & Herbs 30% off</span>
     </div>
   </div>
@@ -209,7 +209,7 @@ const CAT_ICONS = {
 const SALE_DISCOUNTS = {
   "Supplements": 0.40,
   "Essential Oils": 0.40,
-  "Personal Care": 0.30,
+  "Personal Care": 0.40,
   "Food": 0.40,
   "Gifts": 0.50,
   "Household": 0.30,
@@ -245,7 +245,9 @@ const NO_DISCOUNT_IDS = new Set([
   103,            // Sauerkraut
   278, 277,       // Vinagre de Manzana (both brands)
   456, 457,       // Alpha Omega III toothpastes
-  567             // Cayenne Capsules
+  567,            // Cayenne Capsules
+  239,            // Baking Soda
+  463             // Arcilla Verde (clay — no discount)
 ]);
 
 const PRODUCTS = [
@@ -254,79 +256,13 @@ const PRODUCTS = [
   {"id": 11, "name": "Detergente Líquido (1gal)", "cat": "Household", "brand": "Terra", "price": 12.0, "qty": 1, "desc": "Liquid laundry detergent, 1 gallon.", "img": ""},
   {"id": 9, "name": "Suavizante de Ropa (1gal)", "cat": "Household", "brand": "Terra", "price": 12.5, "qty": 1, "desc": "Fabric softener, 1 gallon.", "img": ""},
   {"id": 10, "name": "Suavizante de Ropa (2L)", "cat": "Household", "brand": "Terra", "price": 7.25, "qty": 1, "desc": "Fabric softener, 2 liters.", "img": ""},
-  {"id": 365, "name": "Essential Oil Kit (5 piece)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 28.0, "qty": 1, "desc": "Five-piece essential oil kit: Pine, Laurel, Mint, Geranium, Cinnamon.", "img": ""},
-  {"id": 391, "name": "Albahaca", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.0, "qty": 1, "desc": "Basil essential oil, 5ml.", "img": ""},
-  {"id": 394, "name": "Árbol de Té (15ml)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 21.0, "qty": 2, "desc": "Tea tree essential oil, 15ml.", "img": ""},
-  {"id": 396, "name": "Benjuí", "cat": "Essential Oils", "brand": "iSabru", "price": 9.0, "qty": 3, "desc": "Benzoin essential oil, 5ml.", "img": ""},
-  {"id": 395, "name": "Bergamot", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.0, "qty": 3, "desc": "Bergamot essential oil, 5ml.", "img": ""},
-  {"id": 397, "name": "Café (EO)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.0, "qty": 2, "desc": "Coffee essential oil, 5ml.", "img": ""},
-  {"id": 366, "name": "Caléndula (EO)", "cat": "Essential Oils", "brand": "Chakra Seeds", "price": 10.0, "qty": 2, "desc": "Calendula essential oil, 5ml.", "img": ""},
-  {"id": 392, "name": "Camfor / Alcanforero", "cat": "Essential Oils", "brand": "Green Harmony", "price": 7.5, "qty": 6, "desc": "Camphor essential oil, 5ml.", "img": ""},
-  {"id": 398, "name": "Canela (Chakra)", "cat": "Essential Oils", "brand": "Chakra Seeds", "price": 7.25, "qty": 2, "desc": "Cinnamon essential oil, 5ml.", "img": ""},
-  {"id": 575, "name": "Canela (Isabru)", "cat": "Essential Oils", "brand": "Isabru", "price": 19.0, "qty": 1, "desc": "Cinnamon essential oil, 5ml. Premium.", "img": ""},
-  {"id": 399, "name": "Casia", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.5, "qty": 5, "desc": "Cassia essential oil, 5ml.", "img": ""},
-  {"id": 400, "name": "Cedro", "cat": "Essential Oils", "brand": "Green Harmony", "price": 7.5, "qty": 7, "desc": "Cedarwood essential oil, 5ml.", "img": ""},
-  {"id": 401, "name": "Ciprés (Green Harmony)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.0, "qty": 4, "desc": "Cypress essential oil, 5ml.", "img": ""},
-  {"id": 450, "name": "Ciprés (Chakra)", "cat": "Essential Oils", "brand": "Chakra Seeds", "price": 9.0, "qty": 2, "desc": "Cypress essential oil, 5ml.", "img": ""},
-  {"id": 402, "name": "Citronella (5ml)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.5, "qty": 3, "desc": "Citronella essential oil, 5ml.", "img": ""},
-  {"id": 403, "name": "Citronella (10ml)", "cat": "Essential Oils", "brand": "iSabru", "price": 13.5, "qty": 1, "desc": "Citronella essential oil, 10ml.", "img": ""},
-  {"id": 572, "name": "Clavo de Olor", "cat": "Essential Oils", "brand": "Chakra Seeds", "price": 7.0, "qty": 3, "desc": "Clove essential oil, 5ml.", "img": ""},
-  {"id": 404, "name": "Cúrcuma (EO)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 7.0, "qty": 1, "desc": "Turmeric essential oil, 5ml.", "img": ""},
-  {"id": 405, "name": "Enebro (5ml)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.0, "qty": 1, "desc": "Juniper essential oil, 5ml.", "img": ""},
-  {"id": 406, "name": "Enebro (premium)", "cat": "Essential Oils", "brand": "iSabru", "price": 15.0, "qty": 1, "desc": "Juniper essential oil, 5ml. Premium.", "img": ""},
-  {"id": 407, "name": "Eucalipto", "cat": "Essential Oils", "brand": "Green Harmony", "price": 9.0, "qty": 5, "desc": "Eucalyptus essential oil, 5ml.", "img": ""},
-  {"id": 415, "name": "Fenugreek (EO)", "cat": "Essential Oils", "brand": "Chakra Seeds", "price": 14.75, "qty": 4, "desc": "Fenugreek essential oil, 10ml.", "img": ""},
-  {"id": 408, "name": "Gaulteria", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.0, "qty": 3, "desc": "Wintergreen essential oil, 5ml.", "img": ""},
-  {"id": 409, "name": "Geranio (5ml)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 9.0, "qty": 2, "desc": "Geranium essential oil, 5ml.", "img": ""},
-  {"id": 573, "name": "Geranio (10ml)", "cat": "Essential Oils", "brand": "Killanaya", "price": 6.5, "qty": 2, "desc": "Geranium essential oil, 10ml.", "img": ""},
-  {"id": 410, "name": "Hierba Buena", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.0, "qty": 1, "desc": "Spearmint essential oil, 9ml.", "img": ""},
-  {"id": 412, "name": "Hierba Luisa (10ml)", "cat": "Essential Oils", "brand": "iSabru", "price": 8.0, "qty": 2, "desc": "Lemon verbena essential oil, 10ml.", "img": ""},
-  {"id": 411, "name": "Hierba Luisa (5ml)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 15.0, "qty": 1, "desc": "Lemon verbena essential oil, 5ml.", "img": ""},
-  {"id": 413, "name": "Incienso", "cat": "Essential Oils", "brand": "Green Harmony", "price": 11.0, "qty": 4, "desc": "Frankincense essential oil, 5ml.", "img": ""},
-  {"id": 414, "name": "Jazmín", "cat": "Essential Oils", "brand": "Green Harmony", "price": 19.0, "qty": 1, "desc": "Jasmine essential oil, 5ml.", "img": ""},
-  {"id": 416, "name": "Jengibre (5ml)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 19.0, "qty": 2, "desc": "Ginger essential oil, 5ml.", "img": ""},
-  {"id": 417, "name": "Jengibre (10ml)", "cat": "Essential Oils", "brand": "iSabru", "price": 15.0, "qty": 1, "desc": "Ginger essential oil, 10ml.", "img": ""},
-  {"id": 418, "name": "Laurel", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.5, "qty": 3, "desc": "Bay laurel essential oil, 5ml.", "img": ""},
-  {"id": 421, "name": "Lavanda", "cat": "Essential Oils", "brand": "Green Harmony", "price": 21.0, "qty": 2, "desc": "Lavender essential oil, 15ml.", "img": ""},
-  {"id": 422, "name": "Lima", "cat": "Essential Oils", "brand": "Green Harmony", "price": 6.5, "qty": 7, "desc": "Lime essential oil, 5ml.", "img": ""},
   {"id": 423, "name": "Limón", "cat": "Essential Oils", "brand": "Green Harmony", "price": 7.0, "qty": 2, "desc": "Lemon essential oil, 5ml.", "img": ""},
-  {"id": 430, "name": "Mandarina", "cat": "Essential Oils", "brand": "Green Harmony", "price": 7.0, "qty": 2, "desc": "Mandarin essential oil, 5ml.", "img": ""},
-  {"id": 424, "name": "Manzanilla", "cat": "Essential Oils", "brand": "iSabru", "price": 25.0, "qty": 1, "desc": "Chamomile essential oil, 2ml. Premium.", "img": ""},
   {"id": 425, "name": "Menta", "cat": "Essential Oils", "brand": "Green Harmony", "price": 7.0, "qty": 2, "desc": "Peppermint essential oil, 5ml.", "img": ""},
-  {"id": 426, "name": "Mirra", "cat": "Essential Oils", "brand": "Green Harmony", "price": 17.5, "qty": 1, "desc": "Myrrh essential oil, 5ml.", "img": ""},
-  {"id": 428, "name": "Naranja", "cat": "Essential Oils", "brand": "Chakra Seeds", "price": 8.0, "qty": 1, "desc": "Orange essential oil, 5ml.", "img": ""},
-  {"id": 427, "name": "Naranja Dulce", "cat": "Essential Oils", "brand": "Green Harmony", "price": 6.5, "qty": 1, "desc": "Sweet orange essential oil, 5ml.", "img": ""},
-  {"id": 429, "name": "Neroli", "cat": "Essential Oils", "brand": "Green Harmony", "price": 9.0, "qty": 1, "desc": "Neroli essential oil, 5ml.", "img": ""},
-  {"id": 431, "name": "Orégano (EO)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.5, "qty": 2, "desc": "Oregano essential oil, 5ml.", "img": ""},
-  {"id": 432, "name": "Palmarosa", "cat": "Essential Oils", "brand": "Green Harmony", "price": 12.0, "qty": 1, "desc": "Palmarosa essential oil, 5ml.", "img": ""},
-  {"id": 433, "name": "Palo Santo", "cat": "Essential Oils", "brand": "Tienda Nectar", "price": 5.0, "qty": 2, "desc": "Palo santo essential oil.", "img": ""},
-  {"id": 434, "name": "Patchouli", "cat": "Essential Oils", "brand": "Green Harmony", "price": 8.0, "qty": 2, "desc": "Patchouli essential oil, 5ml.", "img": ""},
-  {"id": 419, "name": "Patchouli Supreme", "cat": "Essential Oils", "brand": "Plant Prana", "price": 15.0, "qty": 1, "desc": "Patchouli supreme essential oil, 5ml.", "img": ""},
-  {"id": 435, "name": "Pimienta Negra (EO)", "cat": "Essential Oils", "brand": "iSabru", "price": 11.0, "qty": 2, "desc": "Black pepper essential oil, 5ml.", "img": ""},
-  {"id": 436, "name": "Pino", "cat": "Essential Oils", "brand": "Green Harmony", "price": 5.0, "qty": 2, "desc": "Pine essential oil, 5ml.", "img": ""},
-  {"id": 437, "name": "Romero (Chakra)", "cat": "Essential Oils", "brand": "Chakra Seeds", "price": 6.75, "qty": 1, "desc": "Rosemary essential oil, 5ml.", "img": ""},
-  {"id": 438, "name": "Romero (Green Harmony)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 7.0, "qty": 1, "desc": "Rosemary essential oil, 5ml.", "img": ""},
-  {"id": 439, "name": "Rosa de Mai", "cat": "Essential Oils", "brand": "Green Harmony", "price": 16.0, "qty": 1, "desc": "May rose essential oil, 5ml.", "img": ""},
-  {"id": 440, "name": "Salvia", "cat": "Essential Oils", "brand": "Green Harmony", "price": 11.0, "qty": 2, "desc": "Sage essential oil, 5ml.", "img": ""},
-  {"id": 441, "name": "Sándalo", "cat": "Essential Oils", "brand": "Green Harmony", "price": 12.0, "qty": 1, "desc": "Sandalwood essential oil, 5ml.", "img": ""},
-  {"id": 449, "name": "Set de 3 Aceites", "cat": "Essential Oils", "brand": "Green Harmony", "price": 15.0, "qty": 1, "desc": "Essential oil set of 3: Pine, Cinnamon, Sweet Orange.", "img": ""},
-  {"id": 442, "name": "Té Verde (EO)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 6.25, "qty": 2, "desc": "Green tea essential oil, 5ml.", "img": ""},
-  {"id": 393, "name": "Tea Tree Oil", "cat": "Essential Oils", "brand": "Green Harmony", "price": 9.0, "qty": 12, "desc": "Tea tree essential oil, 5ml. Antimicrobial and purifying.", "img": ""},
-  {"id": 420, "name": "Three Wise Men", "cat": "Essential Oils", "brand": "Plant Prana", "price": 11.0, "qty": 1, "desc": "Three Wise Men essential oil blend, 5ml.", "img": ""},
-  {"id": 443, "name": "Toronja (10ml)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 15.0, "qty": 1, "desc": "Grapefruit essential oil, 10ml.", "img": ""},
-  {"id": 444, "name": "Toronja (5ml)", "cat": "Essential Oils", "brand": "Chakra Seeds", "price": 7.0, "qty": 1, "desc": "Grapefruit essential oil, 5ml.", "img": ""},
-  {"id": 576, "name": "Toronja (Isabru)", "cat": "Essential Oils", "brand": "Isabru", "price": 13.0, "qty": 1, "desc": "Grapefruit essential oil, 10ml.", "img": ""},
-  {"id": 445, "name": "Toronjil", "cat": "Essential Oils", "brand": "Green Harmony", "price": 7.5, "qty": 2, "desc": "Lemon balm essential oil, 5ml.", "img": ""},
-  {"id": 446, "name": "Vainilla (EO)", "cat": "Essential Oils", "brand": "Green Harmony", "price": 9.0, "qty": 2, "desc": "Vanilla essential oil, 5ml.", "img": ""},
-  {"id": 447, "name": "Vetiver", "cat": "Essential Oils", "brand": "Green Harmony", "price": 9.0, "qty": 2, "desc": "Vetiver essential oil, 5ml.", "img": ""},
-  {"id": 448, "name": "Ylang Ylang", "cat": "Essential Oils", "brand": "Green Harmony", "price": 9.0, "qty": 2, "desc": "Ylang ylang essential oil, 5ml.", "img": ""},
-  {"id": 574, "name": "Ylang-Ylang (Isabru)", "cat": "Essential Oils", "brand": "Isabru", "price": 14.0, "qty": 1, "desc": "Ylang ylang essential oil, 5ml. Premium.", "img": ""},
   {"id": 586, "name": "Almond Butter", "cat": "Food", "brand": "Tienda Nectar", "price": 12.25, "qty": 34, "desc": "Almond butter, 454g. Rich in healthy fats and plant-based protein.", "img": ""},
   {"id": 585, "name": "Cashew Butter", "cat": "Food", "brand": "Tienda Nectar", "price": 12.25, "qty": 50, "desc": "Cashew butter, 454g. High in healthy fats and plant-based protein.", "img": ""},
-  {"id": 580, "name": "Bliss Butter", "cat": "Food", "brand": "Indunil", "price": 10.0, "qty": 5, "desc": "Bliss butter — ask for details.", "img": ""},
+
   {"id": 84, "name": "Bee Pollen", "cat": "Food", "brand": "Api Loja", "price": 4.5, "qty": 12, "desc": "Bee pollen, 4oz jar. Nutrient-dense superfood.", "img": ""},
 
-  {"id": 176, "name": "Mishky de Penco Azul", "cat": "Food", "brand": "Apu", "price": 8.5, "qty": 8, "desc": "Fermented agave beverage, 300ml.", "img": ""},
   {"id": 239, "name": "Baking Soda", "cat": "Food", "brand": "Tienda Nectar", "price": 3.75, "qty": 7, "desc": "Baking soda, 454g.", "img": ""},
   {"id": 256, "name": "Cebada", "cat": "Food", "brand": "Schullo", "price": 2.55, "qty": 7, "desc": "Organic barley, 300g.", "img": ""},
   {"id": 278, "name": "Vinagre de Manzana", "cat": "Food", "brand": "Rioja Vina", "price": 5.0, "qty": 7, "desc": "Apple cider vinegar, 500ml.", "img": ""},
@@ -346,10 +282,9 @@ const PRODUCTS = [
   {"id": 235, "name": "Manteca de Cacao (454g)", "cat": "Food", "brand": "Arawi", "price": 19.5, "qty": 4, "desc": "Cacao butter, 454g.", "img": ""},
 
   {"id": 265, "name": "Rye / Centeno", "cat": "Food", "brand": "Schullo", "price": 4.18, "qty": 9, "desc": "Organic rye, 300g.", "img": ""},
-  {"id": 253, "name": "Dates", "cat": "Food", "brand": "Tienda Nectar", "price": 6.0, "qty": 3, "desc": "Medjool dates, 454g.", "img": ""},
+  {"id": 253, "name": "Dates", "cat": "Food", "brand": "Tienda Nectar", "price": 6.50, "qty": 3, "desc": "Medjool dates, 454g.", "img": ""},
   {"id": 264, "name": "Amaranto", "cat": "Food", "brand": "Schullo", "price": 4.27, "qty": 3, "desc": "Amaranth grain, 300g.", "img": ""},
   {"id": 186, "name": "Red Maca Powder", "cat": "Food", "brand": "Chakra Seeds", "price": 8.75, "qty": 2, "desc": "Red maca root powder, 250g.", "img": ""},
-  {"id": 263, "name": "Peanut Butter", "cat": "Food", "brand": "Crunchy", "price": 7.5, "qty": 2, "desc": "Peanut butter, 480g.", "img": ""},
   {"id": 248, "name": "Turmeric Powder", "cat": "Spices", "brand": "Tienda Nectar", "price": 3.25, "qty": 15, "desc": "Turmeric powder, 200g.", "img": ""},
   {"id": 97, "name": "Ceylon Cinnamon", "cat": "Spices", "brand": "Tienda Nectar", "price": 2.0, "qty": 12, "desc": "Ceylon cinnamon powder, 30g.", "img": ""},
   {"id": 92, "name": "Black Pepper", "cat": "Spices", "brand": "Tienda Nectar", "price": 1.0, "qty": 8, "desc": "Black pepper, whole.", "img": ""},
@@ -365,7 +300,6 @@ const PRODUCTS = [
   {"id": 316, "name": "Serum Vitamina C", "cat": "Personal Care", "brand": "Green Harmony", "price": 22.0, "qty": 7, "desc": "Vitamin C serum, 30ml.", "img": ""},
   {"id": 317, "name": "Serum Vitamina E", "cat": "Personal Care", "brand": "Green Harmony", "price": 14.0, "qty": 5, "desc": "Vitamin E serum, 30ml.", "img": ""},
   {"id": 459, "name": "Carbon Activado Soap", "cat": "Personal Care", "brand": "Green Harmony", "price": 4.0, "qty": 12, "desc": "Activated charcoal soap.", "img": ""},
-  {"id": 465, "name": "CBD Soap", "cat": "Personal Care", "brand": "Zerenydad", "price": 8.0, "qty": 7, "desc": "CBD soap.", "img": ""},
   {"id": 463, "name": "Arcilla Verde", "cat": "Personal Care", "brand": "Green Harmony", "price": 4.0, "qty": 7, "desc": "Green clay. Mineral-rich for skin cleansing.", "img": ""},
   {"id": 471, "name": "Shea Butter", "cat": "Personal Care", "brand": "Green Harmony", "price": 6.0, "qty": 6, "desc": "Shea butter, 125g.", "img": ""},
   {"id": 460, "name": "Turmeric Soap", "cat": "Personal Care", "brand": "Green Harmony", "price": 4.0, "qty": 6, "desc": "Turmeric soap.", "img": ""},
@@ -419,7 +353,6 @@ const PRODUCTS = [
   {"id": 543, "name": "L-Carnitine", "cat": "Supplements", "brand": "ALFA", "price": 15.5, "qty": 6, "desc": "L-carnitine 500mg, 60 capsules.", "img": ""},
   {"id": 164, "name": "Triple Black Ajo", "cat": "Supplements", "brand": "Nature's Garden", "price": 15.6, "qty": 6, "desc": "Triple black garlic, 60 capsules.", "img": ""},
   {"id": 569, "name": "Ashwagandha Powder", "cat": "Supplements", "brand": "Tienda Nectar", "price": 3.0, "qty": 6, "desc": "Ashwagandha powder (bulk), 30g.", "img": ""},
-  {"id": 503, "name": "Milk Thistle", "cat": "Supplements", "brand": "Only Natural", "price": 7.0, "qty": 6, "desc": "Silymarin (milk thistle) 1000mg, 60 capsules.", "img": ""},
   {"id": 541, "name": "Vitamina K2 + D3", "cat": "Supplements", "brand": "VitaHealth", "price": 13.0, "qty": 6, "desc": "Vitamin K2 + D3, 60 capsules.", "img": ""},
   {"id": 553, "name": "Vitamina B-1", "cat": "Supplements", "brand": "Only Natural", "price": 15.0, "qty": 5, "desc": "Vitamin B-1 250mg, 100 tablets.", "img": ""},
   {"id": 555, "name": "Vitamina B-12", "cat": "Supplements", "brand": "Only Natural", "price": 5.25, "qty": 5, "desc": "Vitamin B-12 500mcg, 100 tablets.", "img": ""},
